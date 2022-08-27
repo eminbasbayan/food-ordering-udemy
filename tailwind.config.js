@@ -7,7 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#00bcd4",
+        primary: "#ffbe33",
+        secondary: "#222831",
+      },
+      fontFamily: {
+        dancing: ["Dancing Script", "cursive"],
       },
     },
   },
