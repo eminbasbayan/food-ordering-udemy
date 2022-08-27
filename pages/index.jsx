@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "../components/layout/Header";
 import Home from "./home";
 
 export default function Index() {
@@ -14,6 +15,7 @@ export default function Index() {
           crossOrigin="true"
         />
       </Head>
+      <Header />
       <Home />
     </div>
   );
