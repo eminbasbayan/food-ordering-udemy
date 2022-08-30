@@ -16,7 +16,8 @@
     "react-icons": "^4.4.0",
     "react-outside-click-handler": "^1.3.0",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
