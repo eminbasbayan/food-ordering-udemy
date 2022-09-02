@@ -19,9 +19,6 @@ const UserSchema = new mongoose.Schema(
     job: {
       type: String,
     },
-    job: {
-      type: String,
-    },
     password: {
       type: String,
       required: true,
