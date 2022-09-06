@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getSession, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -19,7 +20,9 @@ const Profile = ({ session }) => {
   };
 
   useEffect(() => {
-    push("/auth/login");
+    if (!session) {
+      push("/auth/login");
+    }
   }, [session, push]);
 
   return (
@@ -79,7 +82,7 @@ const Profile = ({ session }) => {
   );
 };
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, params }) {
   const session = await getSession({ req });
 
   if (!session) {
@@ -90,6 +93,10 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+
+  const user = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`
+  );
 
   return {
     props: {
