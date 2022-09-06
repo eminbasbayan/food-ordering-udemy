@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
     "formik": "^2.2.9",
     "mongodb": "^4.9.1",
     "mongoose": "^6.5.4",
