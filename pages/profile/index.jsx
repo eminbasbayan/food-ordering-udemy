@@ -1,12 +1,29 @@
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "../../components/profile/Account";
 import Order from "../../components/profile/Order";
 import Password from "../../components/profile/Password";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
+  const { push } = useRouter();
+  const { data: session } = useSession();
+
+  const handleSignOut = () => {
+    if (confirm("Are you sure you want to sign out?")) {
+      signOut({ redirect: false });
+      push("/auth/login");
+    }
+  };
+
+  useEffect(() => {
+    if (!session) {
+      push("/auth/login");
+    }
+  }, [session, push]);
 
   return (
     <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10">
@@ -50,10 +67,8 @@ const Profile = () => {
             <button className="ml-1">Orders</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
-              tabs === 3 && "bg-primary text-white"
-            }`}
-            onClick={() => setTabs(3)}
+            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all`}
+            onClick={handleSignOut}
           >
             <i className="fa fa-sign-out"></i>
             <button className="ml-1">Exit</button>
