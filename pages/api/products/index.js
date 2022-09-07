@@ -17,7 +17,7 @@ const handler = async (req, res) => {
   if (method === "POST") {
     try {
       const newProduct = await Product.create(req.body);
-      res.status(200).json(newProduct);
+      res.status(201).json(newProduct);
     } catch (err) {
       console.log(err);
     }
