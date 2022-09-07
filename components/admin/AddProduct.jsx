@@ -1,10 +1,24 @@
-import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import Title from "../ui/Title";
 import { GiCancel } from "react-icons/gi";
 
 const AddProduct = ({ setIsProductModal }) => {
+  const [file, setFile] = useState();
+  const [imageSrc, setImageSrc] = useState();
+
+  const handleOnChange = (changeEvent) => {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setFile(changeEvent.target.files[0]);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+    console.log(imageSrc);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 after:content-[''] after:w-screen after:h-screen after:bg-white after:absolute after:top-0 after:left-0 after:opacity-60 grid place-content-center">
       <OutsideClickHandler onOutsideClick={() => setIsProductModal(false)}>
@@ -13,8 +27,26 @@ const AddProduct = ({ setIsProductModal }) => {
             <Title addClass="text-[40px] text-center">Add a New Product</Title>
 
             <div className="flex flex-col text-sm mt-6">
-              <span className="font-semibold mb-1">Choose an image</span>
-              <input type="file" />
+              <label className="flex gap-2 items-center">
+                <input
+                  type="file"
+                  onChange={(e) => handleOnChange(e)}
+                  className="hidden"
+                />
+                <button className="btn-primary !rounded-none !bg-blue-600 pointer-events-none">
+                  Choose an Image
+                </button>
+                {imageSrc && (
+                  <div>
+                    {/*eslint-disable-next-line @next/next/no-img-element*/}
+                    <img
+                      src={imageSrc}
+                      alt=""
+                      className="w-12 h-12 rounded-full"
+                    />
+                  </div>
+                )}
+              </label>
             </div>
             <div className="flex flex-col text-sm mt-4">
               <span className="font-semibold mb-[2px]">Title</span>
