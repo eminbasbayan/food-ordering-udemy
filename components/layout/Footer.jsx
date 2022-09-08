@@ -18,7 +18,7 @@ const Footer = () => {
     };
     getFooter();
   }, []);
-  console.log(footer);
+
   return (
     <div className="bg-secondary text-white">
       <div className="container mx-auto pt-16 pb-6">
