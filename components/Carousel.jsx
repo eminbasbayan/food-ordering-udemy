@@ -12,9 +12,9 @@ const Carousel = () => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 30000,
-    appenDots: (dots) => (
+    appendDots: (dots) => (
       <div>
-        <ul>{dots}</ul>
+        <ul className="container mx-auto w-full text-start">{dots}</ul>
       </div>
     ),
     customPaging: (i) => (
@@ -23,7 +23,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="h-screen w-full container mx-auto -mt-[88px]">
+    <div className="h-screen w-full -mt-[88px]">
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="relative h-full w-full">
           <Image
@@ -37,8 +37,8 @@ const Carousel = () => {
       </div>
       <Slider {...settings}>
         <div>
-          <div className="mt-48  text-white flex flex-col items-start gap-y-10">
-            <Title addClass="text-6xl">Fast Food Restaurant</Title>
+          <div className="mt-48 container mx-auto  text-white flex flex-col items-start gap-y-8">
+            <Title addClass="text-5xl">Fast Food Restaurant</Title>
             <p className="text-sm sm:w-2/5 w-full">
               Doloremque, itaque aperiam facilis rerum, commodi, temporibus
               sapiente ad mollitia laborum quam quisquam esse error unde.
@@ -49,8 +49,8 @@ const Carousel = () => {
           </div>
         </div>
         <div>
-          <div className="relative text-white top-48 flex flex-col items-start gap-y-10">
-            <Title addClass="text-6xl">Fast Food Restaurant</Title>
+          <div className="mt-48 container mx-auto  text-white flex flex-col items-start gap-y-8">
+            <Title addClass="text-5xl">Fast Food Restaurant</Title>
             <p className="text-sm sm:w-2/5 w-full">
               Doloremque, itaque aperiam facilis rerum, commodi, temporibus
               sapiente ad mollitia laborum quam quisquam esse error unde.
